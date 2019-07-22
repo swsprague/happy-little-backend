@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class VideosController < ApplicationController
-  before_action :set_video, only: [:show, :update, :destroy]
+  before_action :set_video, only: %i[show update destroy]
 
   # GET /videos
   def index
@@ -39,13 +41,14 @@ class VideosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_video
-      @video = Video.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def video_params
-      params.require(:video).permit(:video_id, :episode_number, :name, :description, :air_date, :season_num)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_video
+    @video = Video.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def video_params
+    params.require(:video).permit(:youtube_id, :name, :description, :air_date, :season_num)
+  end
 end
