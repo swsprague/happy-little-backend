@@ -3,5 +3,6 @@
 class User < ApplicationRecord
   include Authentication
   has_many :examples
-  # has_many :videos
+  has_many :playlists
+  has_many :videos, through: :playlists
 end
