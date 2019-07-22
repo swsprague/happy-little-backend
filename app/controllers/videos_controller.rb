@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class VideosController < ApplicationController
+class VideosController < OpenReadController
   before_action :set_video, only: %i[show update destroy]
 
   # GET /videos

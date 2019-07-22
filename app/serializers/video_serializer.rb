@@ -2,4 +2,5 @@
 
 class VideoSerializer < ActiveModel::Serializer
   attributes :id, :youtube_id, :episode_number, :name, :description, :air_date, :season_num
+  # belongs_to :user
 end
