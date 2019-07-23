@@ -2,6 +2,6 @@
 
 class Video < ApplicationRecord
   # belongs_to :user
-  has_many :playlists
-  has_many :users, through: :playlists
+  has_many :playlist_videos
+  has_many :playlists, through: :playlist_videos
 end

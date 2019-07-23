@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PlaylistsController < ApplicationController
+class PlaylistsController < OpenReadController
   before_action :set_playlist, only: %i[show update destroy]
 
   # GET /playlists
