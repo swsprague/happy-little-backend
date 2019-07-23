@@ -13,7 +13,7 @@
 require 'csv'
 
 Video.transaction do
-  CSV.foreach('app/data/videos.csv',
+  CSV.foreach(Rails.root + 'data/videos.csv',
               headers: true,
               header_converters: ->(h) { h.downcase.to_sym }) do |video_row|
     video = video_row.to_hash
