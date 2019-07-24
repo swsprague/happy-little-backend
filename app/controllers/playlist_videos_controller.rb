@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PlaylistVideosController < OpenReadController
+class PlaylistVideosController < ProtectedController
   before_action :set_playlist_video, only: %i[show update destroy]
 
   # GET /playlist_videos

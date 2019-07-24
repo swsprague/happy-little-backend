@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class PlaylistsController < OpenReadController
+class PlaylistsController < ProtectedController
   before_action :set_playlist, only: %i[show update destroy]
 
   # GET /playlists
   def index
-    @playlists = Playlist.all
+    @playlists = current_user.playlists
 
     render json: @playlists
   end
@@ -17,7 +17,7 @@ class PlaylistsController < OpenReadController
 
   # POST /playlists
   def create
-    @playlist = Playlist.new(playlist_params)
+    @playlist = current_user.playlists.build(playlist_params)
 
     if @playlist.save
       render json: @playlist, status: :created, location: @playlist
@@ -44,7 +44,7 @@ class PlaylistsController < OpenReadController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_playlist
-    @playlist = Playlist.find(params[:id])
+    @playlist = current_user.playlists.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
